@@ -1,0 +1,239 @@
+/* 
+* Tyler Carpenter
+* CIS4004-26Spring 0001
+* Week 3: Basic CSS
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.6;
+}
+
+/* Navigation container */
+#menuItems {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: black;
+    padding: 0;
+    overflow-y: auto;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Recent Articles button */
+#recentArticles {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-align: center;
+}
+
+#recentArticles:hover {
+    background-color: rgba(189, 143, 29, 0.808);
+}
+
+#jumpMenu {
+    list-style: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#recentArticles:hover + #jumpMenu,
+#jumpMenu:hover {
+    max-height: 500px;
+}
+
+#jumpMenu li {
+    margin: 0;
+}
+
+#jumpMenu a {
+    display: block;
+    color: black;
+    background-color: goldenrod;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#jumpMenu a:hover {
+    background-color: blue;
+    color: white;
+}
+
+#menuItems > button:not(#recentArticles) {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+#menuItems > button:not(#recentArticles):hover {
+    background-color: goldenrod;
+}
+
+main {
+    margin-left: 15%;
+    width: 85%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 15%;
+    width: 85%;
+    background-color: red;
+    z-index: 99;
+    padding: 10px 0;
+}
+
+header > p {
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+main > h1 {
+    margin-top: 150px;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 100px;
+}
+
+article {
+    width: 300px;
+    padding: 15px;
+    color: #ccc; 
+    transition: color 0.5s, width 0.5s, height 0.5s;
+}
+
+/* Hover: darker text and expansion */
+article:hover {
+    color: #000; 
+    width: 350px; 
+}
+
+article h2 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+/* First letter styling */
+article p:first-of-type::first-letter {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
+}
+
+article p {
+    text-align: justify;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Links to Google with arrow */
+article a[href*="google.com"]::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    background-image: url('arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+article a {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+article a:hover {
+    text-decoration: none;
+}
+
+#thanks {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #87CEEB;
+    padding: 20px 40px;
+    border: 2px solid #000;
+    font-size: 1.5em;
+    font-weight: bold;
+    z-index: 98;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 30px;
+    margin-left: 0;
+}
+
+footer p {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+footer address span {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+footer a {
+    color: #87CEEB;
+}
+
+@media screen and (max-width: 1200px) {
+    #container {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #menuItems {
+        width: 20%;
+    }
+    
+    main {
+        margin-left: 20%;
+        width: 80%;
+    }
+    
+    header {
+        left: 20%;
+        width: 80%;
+    }
+}
